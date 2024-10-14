@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    src:""
   },
 
   /**
@@ -124,5 +124,37 @@ Page({
         uploadTask.abort()
       },
     })
-  }
+  },
+  downLoadFile: function (e) {
+    let page = this
+    const downloadTask = wx.downloadFile({
+      url: 'https://api.mofun365.com:8888/image/banner/1555848473813.jpg',
+      type:'image',
+      success:function (res) {
+        console.log(res)
+        var tempFilesPath = res.tempFilePaths;
+        page.setData({
+          src: tempFilesPath
+        })
+      }
+    })
+    
+    downloadTask.onHeadersReceived(function (res) {
+          console.log(res)
+        })
+
+        downloadTask.offHeadersReceived(function (res) {
+          console.log(res)
+        })
+
+        downloadTask.onProgressUpdate(function (res) {
+          console.log(res)
+        })
+
+        downloadTask.offProgressUpdate(function (res) {
+          console.log(res)
+        })
+
+        downloadTask.abort()
+      },
 })
