@@ -81,4 +81,48 @@ Page({
      complete:function(){}
     });
   },
+  uploadFile: function (e) {
+    wx.chooseImage({
+      count:9,
+      sizeType:["original","compressed"],
+      sourceType:["album","camera"],
+      success:function (res) {
+        let tempFilesPath = res.tempFilePaths
+        const uploadTask = wx.uploadFile({
+          filePath: tempFilesPath[0],
+          name: 'file',
+          url: 'https://api.mofun365.com:8888/api/banner/wxUploadFile',
+          header:{
+            'content-type':'Aplication/json'
+          },
+          formData:{
+            imgName:"我是图片名称",
+            imgSize:"122kb",
+            position:'wx'
+          },
+          success:function(res) {
+            console.log(res)
+          }
+        });
+
+        uploadTask.onHeadersReceived(function (res) {
+          console.log(res)
+        })
+
+        uploadTask.offHeadersReceived(function (res) {
+          console.log(res)
+        })
+
+        uploadTask.onProgressUpdate(function (res) {
+          console.log(res)
+        })
+
+        uploadTask.offProgressUpdate(function (res) {
+          console.log(res)
+        })
+
+        uploadTask.abort()
+      },
+    })
+  }
 })
