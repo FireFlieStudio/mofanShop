@@ -1,0 +1,2 @@
+<!--pages/category/category.wxml-->
+<view class="up" bindtap="testAPI">测试接口</view>

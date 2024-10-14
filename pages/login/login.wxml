@@ -1,0 +1,20 @@
+<view class="content">
+	<view class="loginTitle">
+		<view class="{{currentTab==0?'select':'default'}}" data-current="0" bindtap="switchNav">账号密码登录</view>
+		<view class="{{currentTab==1?'select':'default'}}" data-current="1" bindtap="switchNav">手机快捷登录</view>
+	</view>
+	<view class="hr"></view>
+	<swiper current="{{currentTab}}"style="height:120px">
+		<swiper-item>
+			<view style="margin:0 auto;border:1px solid #cccccc;width:99%;height: 100px;">
+				账号密码登录区域内容
+			</view>
+		</swiper-item>
+
+		<swiper-item>
+			<view style="margin:0 auto;border:1px solid #cccccc;width:99%;height: 100px;">
+				手机快捷登录区域内容
+			</view>
+		</swiper-item>
+	</swiper>
+</view>
